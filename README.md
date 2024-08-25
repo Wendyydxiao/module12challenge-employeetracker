@@ -1,7 +1,7 @@
 # Employee Tracker
 
 ## Description
-This project is a command-line application that dynamically manage a company's employee database and allows non-developer to use an easy interface to read and interact with employee information stored in database. It utilizes Node.js along with the `inquirer` module to prompt the user with required task and pull/update/delete related data provided in user's responses. User can quickly and easily retrive the staff data and make updates too.
+This project is a command-line application that dynamically manage a company's employee database and allows non-developer to use an easy interface to read and interact with employee information stored in database. It utilizes Node.js along with the `inquirer` module to prompt the user with required task and pull/create/update/delete related data provided in user's responses. User can quickly and easily retrive the staff data and make updates too.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -20,7 +20,7 @@ This project is a command-line application that dynamically manage a company's e
 1. Open your terminal and navigate to the project directory.
 2. Run the command `node index.js`. 
 3. Input prompt answers with the relevant information about your actions.
-4. When there are any data changes made, employee_db will update isntantly to reflect accordingly.
+4. When there are any data changes made, employee_db will update instantly to reflect accordingly.
 
 ## License
 This project is licensed under MIT.

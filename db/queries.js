@@ -1,26 +1,38 @@
 const pool = require('./connection');
 
 const getDepartments = () => pool.query('SELECT * FROM department');
-const getRoles = () => pool.query('SELECT * FROM role');
+const getRoles = () => pool.query(`
+  SELECT 
+    r.id, 
+    r.title, 
+    r.salary, 
+    d.name AS department_name 
+  FROM 
+    role r 
+  JOIN 
+    department d 
+  ON 
+    r.department_id = d.id
+`);
 const getEmployees = () => pool.query(`
-       SELECT 
-          e.id, 
-          e.first_name, 
-          e.last_name, 
-          r.title, 
-          d.name AS department, 
-          r.salary, 
-          CONCAT(m.first_name, ' ', m.last_name) AS manager
-        FROM 
-          employee e
-        JOIN 
-          role r ON e.role_id = r.id
-        JOIN 
-          department d ON r.department_id = d.id
-        LEFT JOIN 
-          employee m ON e.manager_id = m.id
-        ORDER BY 
-          e.id
+    SELECT 
+      e.id, 
+      e.first_name, 
+      e.last_name, 
+      r.title, 
+      d.name AS department, 
+      r.salary, 
+      CONCAT(m.first_name, ' ', m.last_name) AS manager
+    FROM 
+      employee e
+    JOIN 
+      role r ON e.role_id = r.id
+    JOIN 
+      department d ON r.department_id = d.id
+    LEFT JOIN 
+      employee m ON e.manager_id = m.id
+    ORDER BY 
+      e.id
 `);
 
 const addDepartment = (name) => pool.query('INSERT INTO department (name) VALUES ($1)', [name]);
